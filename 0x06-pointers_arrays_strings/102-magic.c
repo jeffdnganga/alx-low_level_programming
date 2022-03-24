@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/**
+ * main - added one line to print a[2] = 98
+ *
+ * Return: Always returns 0
+ */
 int main(void)
 {
 	int n;
