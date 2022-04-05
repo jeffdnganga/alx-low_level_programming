@@ -41,35 +41,35 @@ char **strtow(char *str)
 
 	while (*(str + len))
 		len++;
-		words = count_word(str);
-			if (words == 0)
-				return (NULL);
+	words = count_word(str);
+	if (words == 0)
+		return (NULL);
 
-			matrix = (char **) malloc(sizeof(char *) * (words + 1));
-			if (matrix == NULL)
-				return (NULL);
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
 
-			for (i = 0; i <= len; i++)
+	for (i = 0; i <= len; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\0')
+		{
+			if (c)
 			{
-				if (str[i] == ' ' || str[i] == '\0')
-				{
-					if (c)
-					{
-						end = i;
-						tmp = (char *) malloc(sizeof(char) * (c + 1));
-					if (tmp == NULL)
-						return (NULL);
-					while (start < end)
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
 						*tmp++ = str[start++];
-						*tmp = '\0';
-						matrix[k] = tmp - c;
-						k++;
-						c = 0;
-					}
-				}
-				else if (c++ == 0)
-					start = i;
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
 			}
+		}
+		else if (c++ == 0)
+			start = i;
+	}
 
 	matrix[k] = NULL;
 
